@@ -1,4 +1,4 @@
-package com.historia_mascota.controller;
+package com.historia_mascota.web.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
