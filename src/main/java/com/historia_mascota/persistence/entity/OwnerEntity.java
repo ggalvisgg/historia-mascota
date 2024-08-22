@@ -6,7 +6,7 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name="owner")
-public class Owner {
+public class OwnerEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
