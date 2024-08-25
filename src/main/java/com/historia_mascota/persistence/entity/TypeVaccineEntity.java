@@ -20,4 +20,8 @@ public class TypeVaccineEntity {
 
     @Column(name = "cantVaccine")
     private String cantVaccine;
+
+    @ManyToOne
+    @JoinColumn(name = "codVaccine", insertable=false, updatable=false)
+    private VaccineEntity vaccine;
 }

@@ -17,6 +17,4 @@ public class VetEntity {
 
     @Column(name = "specialtyVet")
     private String specialtyVet;
-
-
 }

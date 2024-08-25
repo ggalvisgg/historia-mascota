@@ -3,6 +3,8 @@ package com.historia_mascota.persistence.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 @Entity
 @Table(name="owner")
@@ -20,4 +22,9 @@ public class OwnerEntity {
 
     @Column(name = "phoneOwner")
     private String phoneOwner;
+
+    @OneToMany(mappedBy = "owner")
+    private List<PetEntity> pet;
+
+
 }

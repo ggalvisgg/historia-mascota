@@ -20,12 +20,15 @@ public class SurgeryEntity {
     @Column(name = "description")
     private String description;
 
-    //vet
-    //pet
-
     @Column(name = "stateSurgery")
     private String stateSurgery;
 
     @Column(name = "observation")
     private String observation;
+
+    //vet
+
+    @ManyToOne
+    @JoinColumn(name = "idPet", insertable=false, updatable=false)
+    private PetEntity pet;
 }
