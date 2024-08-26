@@ -15,7 +15,6 @@ public class PetEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idPet;
-
     @Column(name = "namePet")
     private String namePet;
 
@@ -34,5 +33,6 @@ public class PetEntity {
 
     @OneToMany(mappedBy = "pet")
     private List<SurgeryEntity> surgery;
+
 
 }
