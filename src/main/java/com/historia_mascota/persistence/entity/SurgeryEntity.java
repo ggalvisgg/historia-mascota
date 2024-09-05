@@ -27,7 +27,6 @@ public class SurgeryEntity {
     private String observation;
 
     //vet
-
     @ManyToOne
     @JoinColumn(name = "idPet", insertable=false, updatable=false)
     private PetEntity pet;
