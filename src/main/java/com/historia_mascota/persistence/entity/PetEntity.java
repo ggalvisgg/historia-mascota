@@ -33,6 +33,4 @@ public class PetEntity {
 
     @OneToMany(mappedBy = "pet")
     private List<SurgeryEntity> surgery;
-
-
 }

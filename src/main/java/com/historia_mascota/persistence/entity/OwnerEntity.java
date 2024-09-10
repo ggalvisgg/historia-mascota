@@ -25,6 +25,4 @@ public class OwnerEntity {
 
     @OneToMany(mappedBy = "owner")
     private List<PetEntity> pet;
-
-
 }

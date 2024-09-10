@@ -12,9 +12,9 @@ import java.util.List;
 @Setter
 public class OwnerDto {
 
-    private int idOwner;
-    private String nameOwner;
-    private int ageOwner;
-    private String phoneOwner;
+    private int id;
+    private String name;
+    private int age;
+    private String phone;
     private List<PetDto> pet;
 }
