@@ -27,7 +27,5 @@ public interface DuenioMapper {
     //Falta verificar esta parte, confuso mm
 
     @InheritInverseConfiguration
-    @Mapping(target = "owners", ignore = true)
     OwnerEntity toOwner(DuenioDomain duenioDomain);
-
 }

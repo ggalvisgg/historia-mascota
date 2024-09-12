@@ -14,25 +14,25 @@ public class DuenioService {
     @Autowired
     private DuenioRepository duenioRepository;
 
-    public List<DuenioDomain> getAll() {
-        return duenioRepository.getAll();
+    public List<DuenioDomain> findAll() {
+        return duenioRepository.findAll();
     }
 
-    public Optional<DuenioDomain> getOwner(int idOwner) {
-        return duenioRepository.getOwner(idOwner);
+    public Optional<DuenioDomain> findById(int id) {
+        return duenioRepository.findById(id);
     }
 
-    public Optional<List<DuenioDomain>> getByName(String nameOwner) {
-        return duenioRepository.getByName(nameOwner);
+    public Optional<List<DuenioDomain>> findByNameOwner(String name) {
+        return duenioRepository.findByNameOwner(name);
     }
 
     public DuenioDomain save(DuenioDomain duenioDomain) {
         return duenioRepository.save(duenioDomain);
     }
 
-    public boolean delete(int idOwner) {
-        return getOwner(idOwner).map(product -> {
-            duenioRepository.delete(idOwner);
+    public boolean delete(int id) {
+        return findById(id).map(product -> {
+            duenioRepository.delete(id);
             return true;
         }).orElse(false);
     }

@@ -6,7 +6,6 @@ import java.util.List;
 
 public class DuenioDomain {
 
-    //nose
     private int id;
     private String name;
     private int age;

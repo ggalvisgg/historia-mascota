@@ -7,15 +7,14 @@ import java.util.Optional;
 
 public interface DuenioRepository {
 
-    //Asi es la estructura dada por el profesor, cambia el OwnerDomain
+    //Asi es la estructura dada por el profesor, cambia el OwnerDomaindd
 
-    List<DuenioDomain> getAll();
-    Optional<List<DuenioDomain>> getByName(String nameOwner);
-    Optional<List<DuenioDomain>> getByAge(int ageOwner);
-    Optional<DuenioDomain> getOwner(int idOwner);
+    List<DuenioDomain> findAll();
+    Optional<List<DuenioDomain>> findByNameOwner(String nameOwner);
+    Optional<List<DuenioDomain>> findByAgeOwner(int ageOwner);
+    Optional<DuenioDomain> findById(int idOwner);
     DuenioDomain save(DuenioDomain ownerDomain);
     void delete(int idOwner);
-
 }
 
 

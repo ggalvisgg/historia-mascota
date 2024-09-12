@@ -9,21 +9,23 @@ import java.util.Optional;
 public interface OwnerCRUDRepository extends CrudRepository<OwnerEntity, Integer> {
 
     // Devuelve todos los propietarios
-    List<OwnerEntity> getAll();
+    @Override
+    List<OwnerEntity> findAll();
 
-    List<OwnerEntity> getByName(String nameOwner);
+    // Devuelve los propietarios por nombre
+    List<OwnerEntity> findByNameOwner(String nameOwner);
+
+    // Devuelve los propietarios por edad
+    List<OwnerEntity> findByAgeOwner(int ageOwner);
+
+    // Busca un propietario por su ID
+    Optional<OwnerEntity> findById(int idOwner);
+
 
 
     //CAMBIAR SI ALGO
     //Optional<List<OwnerEntity>> getByName(String nameOwner);
 
-
-    // Devuelve los propietarios por edad
-    List<OwnerEntity> getByAge(int ageOwner);
-
-    // Busca un propietario por su ID
-
-    Optional<OwnerEntity> getOwner(int idOwner);
 
 
 
@@ -32,7 +34,7 @@ public interface OwnerCRUDRepository extends CrudRepository<OwnerEntity, Integer
     Optional<List<OwnerEntity>> getByName(String nameOwner);
 
     // Devuelve los propietarios por edad
-    Optional<List<OwnerEntity>> getByAge(int ageOwner);
+    Optional<List<OwnerEntity>> findByAgeOwner(int ageOwner);
 
     // Busca un propietario por su ID
     Optional<OwnerEntity> getOwner(int idOwner);

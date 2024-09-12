@@ -14,7 +14,7 @@ import java.util.Optional;
 @Repository
 public class OwnerRepository implements DuenioRepository {
 
-    //x
+    //xd
     @Autowired
     private OwnerCRUDRepository ownerCRUDRepository;
 
@@ -23,28 +23,27 @@ public class OwnerRepository implements DuenioRepository {
 
     //solo se cambio de toProducts a toDuenios, siguiendo la logica del profesor
     @Override
-    public List<DuenioDomain> getAll() {
+    public List<DuenioDomain> findAll() {
         List<OwnerEntity> owners = (List<OwnerEntity>) ownerCRUDRepository.findAll();
         return mapper.toDuenios(owners);
     }
 
     @Override
-    public Optional<List<DuenioDomain>> getByName(String nameOwner) {
+    public Optional<List<DuenioDomain>> findByNameOwner(String nameOwner) {
         List<OwnerEntity> owners =
-                ownerCRUDRepository.getByName(nameOwner);
+                ownerCRUDRepository.findByNameOwner(nameOwner);
+        return Optional.of(mapper.toDuenios(owners));
+    }
+
+    public Optional<List<DuenioDomain>> findByAgeOwner(int ageOwner) {
+        List<OwnerEntity> owners =
+                ownerCRUDRepository.findByAgeOwner(ageOwner);
         return Optional.of(mapper.toDuenios(owners));
     }
 
     @Override
-    public Optional<List<DuenioDomain>> getByAge(int ageOwner) {
-        List<OwnerEntity> owners =
-                ownerCRUDRepository.getByAge(ageOwner);
-        return Optional.of(mapper.toDuenios(owners));
-    }
-
-    @Override
-    public Optional<DuenioDomain> getOwner(int idOwner) {
-        return ownerCRUDRepository.getOwner(idOwner)
+    public Optional<DuenioDomain> findById(int idOwner) {
+        return ownerCRUDRepository.findById(idOwner)
                 .map(owner -> mapper.toDuenio(owner));
     }
 
@@ -54,6 +53,10 @@ public class OwnerRepository implements DuenioRepository {
         return mapper.toDuenio(ownerCRUDRepository.save(owner));
     }
 
+    @Override
+    public void delete(int idOwner) {
+        ownerCRUDRepository.deleteById(idOwner);
+    }
 
 
 
@@ -68,9 +71,9 @@ public class OwnerRepository implements DuenioRepository {
 
 
     @Override
-    public Optional<List<DuenioDomain>> getByAge(int ageOwner) {
+    public Optional<List<DuenioDomain>> findByAgeOwner(int ageOwner) {
         Optional<List<OwnerEntity>> owners =
-                ownerCRUDRepository.getByAge(ageOwner);
+                ownerCRUDRepository.findByAgeOwner(ageOwner);
         return Optional.of(mapper.toProducts(owners));
     }
 
@@ -90,10 +93,7 @@ public class OwnerRepository implements DuenioRepository {
     }
     */
 
-    @Override
-    public void delete(int idOwner) {
-        ownerCRUDRepository.deleteById(idOwner);
-    }
+
 }
 
 
