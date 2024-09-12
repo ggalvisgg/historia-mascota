@@ -13,6 +13,11 @@ public interface OwnerCRUDRepository extends CrudRepository<OwnerEntity, Integer
 
     List<OwnerEntity> getByName(String nameOwner);
 
+
+    //CAMBIAR SI ALGO
+    //Optional<List<OwnerEntity>> getByName(String nameOwner);
+
+
     // Devuelve los propietarios por edad
     List<OwnerEntity> getByAge(int ageOwner);
 

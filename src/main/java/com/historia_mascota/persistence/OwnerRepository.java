@@ -35,7 +35,6 @@ public class OwnerRepository implements DuenioRepository {
         return Optional.of(mapper.toDuenios(owners));
     }
 
-
     @Override
     public Optional<List<DuenioDomain>> getByAge(int ageOwner) {
         List<OwnerEntity> owners =
