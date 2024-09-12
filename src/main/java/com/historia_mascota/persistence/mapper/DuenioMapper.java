@@ -1,37 +1,33 @@
 package com.historia_mascota.persistence.mapper;
 
-
-import com.historia_mascota.domain.dto.OwnerDto;
+import com.historia_mascota.domain.DuenioDomain;
 import com.historia_mascota.persistence.entity.OwnerEntity;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
 
+import java.util.List;
+import java.util.Optional;
 
-//@Mapper(componentModel = "spring")
-public interface OwneMapper {
-
-        /*
+//verificar el mapper, falta una parte
+@Mapper(componentModel = "spring")
+public interface DuenioMapper {
 
     @Mappings({
             @Mapping(source = "idOwner", target = "id"),
             @Mapping(source = "nameOwner", target = "name"),
             @Mapping(source = "ageOwner", target = "age"),
             @Mapping(source = "phoneOwner", target = "phone"),
+            @Mapping(source = "pet", target = "pet"),
     })
-    OwnerDto toOwnerDTO(OwnerEntity ownerEntity);
+    DuenioDomain toDuenio(OwnerEntity ownerEntity);
+    List<DuenioDomain> toDuenios(List<OwnerEntity> owners);
+
+    //Falta verificar esta parte, confuso mm
 
     @InheritInverseConfiguration
     @Mapping(target = "owners", ignore = true)
-    OwnerEntity toOwnerEntity(OwnerDto ownerDto);
+    OwnerEntity toOwner(DuenioDomain duenioDomain);
 
-
-
-    @Mapping(source = "idOwner", target = "id")
-    OwnerDto toOwnerDTO(OwnerEntity ownerEntity);
-
-    @Mapping(source = "id", target = "idOwner")
-    OwnerEntity toOwnerEntity(OwnerDto ownerDTO);
-    */
 }

@@ -1,11 +1,11 @@
 package com.historia_mascota.domain.service;
 
-import com.historia_mascota.domain.dto.OwnerDto;
-import com.historia_mascota.domain.repository.OwnerRepository;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.Optional;
+// es la que recibe la orden del controlador que proviene de la
+// propia aplicacion o de una aplicación externa.
+// servicio le manda al controlador, recibe el objeto o manda dentro
+// de la capa del dominio que luego se traduce en una orden a la base de datos(persistencia).
+// dirreciona el objeto
 
 @Service
 public class OwnerService {
@@ -34,7 +34,6 @@ public class OwnerService {
             return true;
         }).orElse(false);
     }
-
  */
 }
 

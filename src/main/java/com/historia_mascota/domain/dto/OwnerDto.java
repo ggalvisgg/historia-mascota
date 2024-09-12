@@ -17,4 +17,7 @@ public class OwnerDto {
     private int age;
     private String phone;
     private List<PetDto> pet;
+
+    // Constructores, getters y setters
+
 }
