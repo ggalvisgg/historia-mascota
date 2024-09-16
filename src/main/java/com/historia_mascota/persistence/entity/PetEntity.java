@@ -15,6 +15,7 @@ public class PetEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idPet;
+
     @Column(name = "namePet")
     private String namePet;
 
@@ -31,6 +32,29 @@ public class PetEntity {
     @JoinColumn(name = "idOwner", insertable=false, updatable=false)
     private OwnerEntity owner;
 
+    @ManyToOne
+    @JoinColumn(name="idVet", insertable=false, updatable=false)
+    private VetEntity vet;
+
+    @ManyToOne
+    @JoinColumn(name="idPeriodicity", insertable=false, updatable=false)
+    private PeriodicityEntity periodicity;
+
+    @OneToMany(mappedBy = "pet")
+    private List<VacunationEntity> vacunation;
+
+    @OneToMany(mappedBy = "pet")
+    private List<WeightControlEntity> weight;
+
+    @OneToMany(mappedBy = "pet")
+    private List<DewormingEntity> deworming;
+
     @OneToMany(mappedBy = "pet")
     private List<SurgeryEntity> surgery;
+
+    @OneToMany(mappedBy = "pet")
+    private List<PrivaccinationEntity> privaccination;
+
+    @OneToMany(mappedBy = "pet")
+    private List<NotificationEntity> notification;
 }

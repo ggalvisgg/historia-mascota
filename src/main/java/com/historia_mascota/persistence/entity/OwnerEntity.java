@@ -17,6 +17,9 @@ public class OwnerEntity {
     @Column(name = "nameOwner")
     private String nameOwner;
 
+    @Column(name = "lastOwner")
+    private String lastOwner;
+
     @Column(name = "ageOwner")
     private int ageOwner;
 
@@ -25,4 +28,5 @@ public class OwnerEntity {
 
     @OneToMany(mappedBy = "owner")
     private List<PetEntity> pet;
+
 }

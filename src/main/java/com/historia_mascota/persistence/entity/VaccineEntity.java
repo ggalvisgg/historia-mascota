@@ -8,15 +8,30 @@ import java.util.List;
 @Entity
 @Table(name="vaccine")
 public class VaccineEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int codVaccine;
 
-    @Column(name = "DateVaccine")
-    private String DateVaccine;
+    @Column(name = "nameVaccine")
+    private String nameVaccine;
 
-    //animal
+    @Column(name = "descriptionVaccine")
+    private String descriptionVaccine;
+
+    @Column(name = "producerVaccine")
+    private String producerVaccine;
+
+    @Column(name = "expirationDate")
+    private String expirationDate;
+
+    @Column(name = "cantVaccine")
+    private String cantVaccine;
+
+    @ManyToOne
+    @JoinColumn(name="idTypeVaccine", insertable=false, updatable=false)
+    private TypeVaccineEntity typeVaccine;
 
     @OneToMany(mappedBy = "vaccine")
-    private List<TypeVaccineEntity> typeVaccine;
+    private List<PrivaccinationEntity> privaccinations;
 }

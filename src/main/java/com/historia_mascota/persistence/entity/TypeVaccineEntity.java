@@ -3,6 +3,8 @@ package com.historia_mascota.persistence.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 @Entity
 @Table(name="type-vaccine")
@@ -12,16 +14,9 @@ public class TypeVaccineEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idTypeVaccine;
 
-    @Column(name = "name")
-    private String name;
-
     @Column(name = "descriptionVaccine")
     private String descriptionVaccine;
 
-    @Column(name = "cantVaccine")
-    private String cantVaccine;
-
-    @ManyToOne
-    @JoinColumn(name = "codVaccine", insertable=false, updatable=false)
-    private VaccineEntity vaccine;
+    @OneToMany(mappedBy = "type-vaccine")
+    private List<VaccineEntity> vaccines;
 }
