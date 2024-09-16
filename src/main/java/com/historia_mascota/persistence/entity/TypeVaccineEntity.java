@@ -17,6 +17,6 @@ public class TypeVaccineEntity {
     @Column(name = "descriptionVaccine")
     private String descriptionVaccine;
 
-    @OneToMany(mappedBy = "type-vaccine")
+    @OneToMany(mappedBy = "typeVaccine")
     private List<VaccineEntity> vaccines;
 }

@@ -22,7 +22,7 @@ public class DewormingEntity extends InformationTable {
     private VetEntity vet;
 
     @ManyToOne
-    @JoinColumn(name = "codType", insertable=false, updatable=false)
+    @JoinColumn(name = "idDeworming", insertable=false, updatable=false)
     private TypeDewormingEntity typeDeworming;
 
     @ManyToOne

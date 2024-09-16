@@ -17,6 +17,6 @@ public class TypeSurgeryEntity {
     @Column(name = "description")
     private String description;
 
-    @OneToMany(mappedBy = "type-surgery")
+    @OneToMany(mappedBy = "typeSurgery")
     private List<SurgeryEntity> surgery;
 }

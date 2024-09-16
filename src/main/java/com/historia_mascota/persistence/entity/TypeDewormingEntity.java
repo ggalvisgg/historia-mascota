@@ -17,6 +17,6 @@ public class TypeDewormingEntity {
     @Column(name = "description")
     private String description;
 
-    @OneToMany(mappedBy = "type-deworming")
-    private List<DewormingEntity> typeDeworming;
+    @OneToMany(mappedBy = "typeDeworming")
+    private List<DewormingEntity> tyDeworming;
 }
