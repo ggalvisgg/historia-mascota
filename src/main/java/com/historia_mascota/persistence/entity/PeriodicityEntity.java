@@ -21,5 +21,5 @@ public class PeriodicityEntity {
     private int intervalDays;
 
     @OneToMany(mappedBy = "periodicity")
-    private List<PetEntity> pet;
+    private List<VacunationEntity> vacunation;
 }

@@ -26,6 +26,10 @@ public class OwnerEntity {
     @Column(name = "phoneOwner")
     private String phoneOwner;
 
+    @ManyToOne
+    @JoinColumn(name = "idUser", insertable=false, updatable=false)
+    private UserEntity user;
+
     @OneToMany(mappedBy = "owner")
     private List<PetEntity> pet;
 

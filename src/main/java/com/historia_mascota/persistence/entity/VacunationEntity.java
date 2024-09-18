@@ -8,7 +8,7 @@ import java.time.LocalDate;
 @Data
 @Entity
 @Table(name ="vacunation")
-public class VacunationEntity extends InformationTable {
+public class VacunationEntity extends InformationTable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,6 +16,9 @@ public class VacunationEntity extends InformationTable {
 
     @Column(name = "dateVaccine")
     private LocalDate dateVaccine;
+
+    @Column(name = "type_vacunation")
+    private String typeVacunation;
 
     @ManyToOne
     @JoinColumn(name = "codVet", insertable=false, updatable=false)
@@ -28,4 +31,8 @@ public class VacunationEntity extends InformationTable {
     @ManyToOne
     @JoinColumn(name = "codVaccine", insertable=false, updatable=false)
     private VaccineEntity vaccine;
+
+    @ManyToOne
+    @JoinColumn(name = "idPeriodicity", insertable=false, updatable=false)
+    private PeriodicityEntity periodicity;
 }

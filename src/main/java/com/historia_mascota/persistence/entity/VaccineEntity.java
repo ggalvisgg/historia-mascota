@@ -31,7 +31,4 @@ public class VaccineEntity {
     @ManyToOne
     @JoinColumn(name="idTypeVaccine", insertable=false, updatable=false)
     private TypeVaccineEntity typeVaccine;
-
-    @OneToMany(mappedBy = "vaccine")
-    private List<PrivaccinationEntity> privaccinations;
 }

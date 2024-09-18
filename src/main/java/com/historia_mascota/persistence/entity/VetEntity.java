@@ -23,14 +23,15 @@ public class VetEntity {
     @Column(name = "phoneVet")
     private String phoneVet;
 
+    @ManyToOne
+    @JoinColumn(name = "idUser", insertable=false, updatable=false)
+    private UserEntity user;
+
     @OneToMany(mappedBy = "vet")
     private List<SurgeryEntity> surgery;
 
     @OneToMany(mappedBy = "vet")
     private List<PetEntity> pet;
-
-    @OneToMany(mappedBy = "vet")
-    private List<PrivaccinationEntity> privaccination;
 
     @OneToMany(mappedBy = "vet")
     private List<DewormingEntity> deworming;

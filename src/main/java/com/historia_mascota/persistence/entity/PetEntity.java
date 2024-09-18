@@ -36,10 +36,6 @@ public class PetEntity {
     @JoinColumn(name="idVet", insertable=false, updatable=false)
     private VetEntity vet;
 
-    @ManyToOne
-    @JoinColumn(name="idPeriodicity", insertable=false, updatable=false)
-    private PeriodicityEntity periodicity;
-
     @OneToMany(mappedBy = "pet")
     private List<VacunationEntity> vacunation;
 
@@ -51,9 +47,6 @@ public class PetEntity {
 
     @OneToMany(mappedBy = "pet")
     private List<SurgeryEntity> surgery;
-
-    @OneToMany(mappedBy = "pet")
-    private List<PrivaccinationEntity> privaccination;
 
     @OneToMany(mappedBy = "pet")
     private List<NotificationEntity> notification;

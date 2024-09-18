@@ -8,7 +8,7 @@ import java.time.LocalDate;
 @Data
 @Entity
 @Table(name="deworming")
-public class DewormingEntity extends InformationTable {
+public class DewormingEntity extends InformationTable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

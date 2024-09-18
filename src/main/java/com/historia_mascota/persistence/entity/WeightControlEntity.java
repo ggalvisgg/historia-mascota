@@ -8,7 +8,7 @@ import java.time.LocalDate;
 @Data
 @Entity
 @Table(name = "weightControl")
-public class WeightControlEntity extends InformationTable {
+public class WeightControlEntity extends InformationTable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
