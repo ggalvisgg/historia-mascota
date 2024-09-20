@@ -17,29 +17,29 @@ public class OwnerController {
 
     @GetMapping("/all")
     public List<DuenioDomain> getAll() {
-        return duenioService.findAll();
+        return duenioService.obtenerTodo();
     }
 
     @GetMapping("/{id}")
     public Optional<DuenioDomain> getProduct(@PathVariable("id") int id) {
-        return duenioService.findById(id);
+        return duenioService.obtenerPorId(id);
     }
 
     @GetMapping("/name/{name}")
     public Optional<List<DuenioDomain>> getByName(@PathVariable("name") String name) {
-        return duenioService.findByNameOwner(name);
+        return duenioService.obtenerPorNombre(name);
     }
 
     @PostMapping("/save")
     public DuenioDomain save(@RequestBody DuenioDomain duenioDomain) {
-        return duenioService.save(duenioDomain);
+        return duenioService.guardarDuenio(duenioDomain);
     }
 
     @DeleteMapping("/delete/{id}")
     public boolean delete(@PathVariable("id") int id) {
-        return duenioService.delete(id);
+        return duenioService.eliminarDuenio(id);
     }
-
+    
 }
 
 

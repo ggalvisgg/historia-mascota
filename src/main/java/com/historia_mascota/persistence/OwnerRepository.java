@@ -23,38 +23,38 @@ public class OwnerRepository implements DuenioRepository {
 
     //solo se cambio de toProducts a toDuenios, siguiendo la logica del profesor
     @Override
-    public List<DuenioDomain> findAll() {
+    public List<DuenioDomain> traerTodosDuenios() {
         List<OwnerEntity> owners = (List<OwnerEntity>) ownerCRUDRepository.findAll();
         return mapper.toDuenios(owners);
     }
 
     @Override
-    public Optional<List<DuenioDomain>> findByNameOwner(String nameOwner) {
+    public Optional<List<DuenioDomain>> traerPorNombre(String nameOwner) {
         List<OwnerEntity> owners =
                 ownerCRUDRepository.findByNameOwner(nameOwner);
         return Optional.of(mapper.toDuenios(owners));
     }
 
-    public Optional<List<DuenioDomain>> findByAgeOwner(int ageOwner) {
+    public Optional<List<DuenioDomain>> traerPorEdad(int ageOwner) {
         List<OwnerEntity> owners =
                 ownerCRUDRepository.findByAgeOwner(ageOwner);
         return Optional.of(mapper.toDuenios(owners));
     }
 
     @Override
-    public Optional<DuenioDomain> findById(int idOwner) {
+    public Optional<DuenioDomain> traerPorIdentificacion(int idOwner) {
         return ownerCRUDRepository.findById(idOwner)
                 .map(owner -> mapper.toDuenio(owner));
     }
 
     @Override
-    public DuenioDomain save(DuenioDomain duenioDomain) {
+    public DuenioDomain guardarDuenio(DuenioDomain duenioDomain) {
         OwnerEntity owner = mapper.toOwner(duenioDomain);
         return mapper.toDuenio(ownerCRUDRepository.save(owner));
     }
 
     @Override
-    public void delete(int idOwner) {
+    public void eliminarDuenio(int idOwner) {
         ownerCRUDRepository.deleteById(idOwner);
     }
 

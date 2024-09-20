@@ -24,8 +24,6 @@ public interface DuenioMapper {
     DuenioDomain toDuenio(OwnerEntity ownerEntity);
     List<DuenioDomain> toDuenios(List<OwnerEntity> owners);
 
-    //Falta verificar esta parte, confuso mm
-
     @InheritInverseConfiguration
     OwnerEntity toOwner(DuenioDomain duenioDomain);
 }
