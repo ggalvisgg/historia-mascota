@@ -19,6 +19,9 @@ public class PetEntity {
     @Column(name = "namePet")
     private String namePet;
 
+    @Column(name = "typePet")
+    private String typePet;
+
     @Column(name = "speciesPet")
     private String speciesPet;
 
