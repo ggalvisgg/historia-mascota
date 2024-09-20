@@ -10,7 +10,7 @@ import org.mapstruct.Mappings;
 import java.util.List;
 import java.util.Optional;
 
-//verificar el mapper, falta una parte
+//verificar el mapper, falta una partes
 @Mapper(componentModel = "spring")
 public interface DuenioMapper {
 
