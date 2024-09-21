@@ -14,7 +14,6 @@ import java.util.Optional;
 @Repository
 public class OwnerRepository implements DuenioRepository {
 
-    //xd
     @Autowired
     private OwnerCRUDRepository ownerCRUDRepository;
 
@@ -35,6 +34,7 @@ public class OwnerRepository implements DuenioRepository {
         return Optional.of(mapper.toDuenios(owners));
     }
 
+    @Override
     public Optional<List<DuenioDomain>> traerPorEdad(int ageOwner) {
         List<OwnerEntity> owners =
                 ownerCRUDRepository.findByAgeOwner(ageOwner);

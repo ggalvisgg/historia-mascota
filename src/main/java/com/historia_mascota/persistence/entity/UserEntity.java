@@ -12,14 +12,12 @@ public class UserEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idUser;
+    private Integer idUser;
 
-    @OneToMany(mappedBy = "user")
-    private List<VetEntity> vet;
-
-    @OneToMany(mappedBy = "user")
-    private List<OwnerEntity> owner;
-
-    @OneToMany(mappedBy = "user")
-    private List<Logs> logs;
+    @Column(name = "id_owner")
+    private Integer idOwner;
 }
+
+
+
+

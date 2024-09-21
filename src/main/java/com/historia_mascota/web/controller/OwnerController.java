@@ -39,7 +39,6 @@ public class OwnerController {
     public boolean delete(@PathVariable("id") int id) {
         return duenioService.eliminarDuenio(id);
     }
-    
 }
 
 

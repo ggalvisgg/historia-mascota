@@ -8,9 +8,10 @@ public class DuenioDomain {
 
     private int id;
     private String name;
+    private String last;
     private int age;
     private String phone;
-    private List<PetDto> pet;
+    private List<MascotaDomain> pet;
 
     public int getId() {
         return id;
@@ -26,6 +27,14 @@ public class DuenioDomain {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getLast() {
+        return last;
+    }
+
+    public void setLast(String last) {
+        this.last = last;
     }
 
     public int getAge() {
@@ -44,11 +53,11 @@ public class DuenioDomain {
         this.phone = phone;
     }
 
-    public List<PetDto> getPet() {
+    public List<MascotaDomain> getPet() {
         return pet;
     }
 
-    public void setPet(List<PetDto> pet) {
+    public void setPet(List<MascotaDomain> pet) {
         this.pet = pet;
     }
 }

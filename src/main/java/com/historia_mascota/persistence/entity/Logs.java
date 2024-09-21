@@ -17,7 +17,10 @@ public class Logs {
     private String typeAction;
     private LocalDate fecha;
 
+    /*
     @ManyToOne
     @JoinColumn(name="idUser", insertable=false, updatable=false)
     private UserEntity user;
+
+     */
 }
