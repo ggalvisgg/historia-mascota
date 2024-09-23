@@ -13,5 +13,5 @@ public interface PetCRUDRepository extends CrudRepository<PetEntity, Integer> {
     List<PetEntity> findByNamePet(String namePet);
     List<PetEntity> findBySpeciesPet(String speciesPet);
     List<PetEntity> findByGenderPet(String genderPet);
-    Optional<PetEntity> findById(int idMascota);
+    Optional<PetEntity> findById(int idPet);
 }

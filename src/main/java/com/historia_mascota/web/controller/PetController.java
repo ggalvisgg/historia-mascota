@@ -1,6 +1,8 @@
 package com.historia_mascota.web.controller;
 
+import com.historia_mascota.domain.DuenioDomain;
 import com.historia_mascota.domain.MascotaDomain;
+import com.historia_mascota.domain.service.DuenioService;
 import com.historia_mascota.domain.service.MascotaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +16,9 @@ public class PetController {
 
     @Autowired
     private MascotaService mascotaService;
+
+    @Autowired
+    private DuenioService duenioService;
 
     @GetMapping("/all")
     public List<MascotaDomain> getAll() {

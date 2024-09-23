@@ -1,6 +1,7 @@
 package com.historia_mascota.domain.service;
 
 import com.historia_mascota.domain.MascotaDomain;
+import com.historia_mascota.domain.repository.DuenioRepository;
 import com.historia_mascota.domain.repository.MascotaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

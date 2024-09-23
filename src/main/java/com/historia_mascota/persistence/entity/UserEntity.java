@@ -11,11 +11,11 @@ import java.util.List;
 public class UserEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_User")
     private Integer idUser;
 
-    @Column(name = "id_owner")
-    private Integer idOwner;
+    @Column(name = "user_type")
+    private String userType;
 }
 
 

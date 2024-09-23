@@ -82,6 +82,7 @@ public class MascotaDomain {
         this.veterinarioId = veterinarioId;
     }
 
+
     public List<VacunacionDomain> getVacunacion() {
         return vacunacion;
     }

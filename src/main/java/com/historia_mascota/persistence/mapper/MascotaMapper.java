@@ -33,6 +33,8 @@ public interface MascotaMapper {
 
     @InheritInverseConfiguration
     PetEntity toPet(MascotaDomain mascotaDomain);
+
+
 }
 
 

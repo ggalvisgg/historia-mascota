@@ -10,7 +10,7 @@ import java.util.List;
 public class OwnerEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_Owner")
     private int idOwner;
 
     @Column(name = "nameOwner")

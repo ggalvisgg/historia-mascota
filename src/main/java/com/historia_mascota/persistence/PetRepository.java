@@ -3,7 +3,9 @@ package com.historia_mascota.persistence;
 import com.historia_mascota.domain.DuenioDomain;
 import com.historia_mascota.domain.MascotaDomain;
 import com.historia_mascota.domain.repository.MascotaRepository;
+import com.historia_mascota.persistence.crud.OwnerCRUDRepository;
 import com.historia_mascota.persistence.crud.PetCRUDRepository;
+import com.historia_mascota.persistence.entity.OwnerEntity;
 import com.historia_mascota.persistence.entity.PetEntity;
 import com.historia_mascota.persistence.mapper.MascotaMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,9 @@ public class PetRepository implements MascotaRepository {
 
     @Autowired
     private PetCRUDRepository petCRUDRepository;
+
+    @Autowired
+    private OwnerCRUDRepository ownerCRUDRepository;
 
     @Autowired
     private MascotaMapper mapper;
@@ -54,11 +59,39 @@ public class PetRepository implements MascotaRepository {
                 .map(pet -> mapper.toMascota(pet));
     }
 
+    /*
+    @Override
+    public MascotaDomain guardarMascota(MascotaDomain mascotaDomain) {
+
+        if (ownerCRUDRepository.existsByIdOwner(mascotaDomain.getDuenioIde())) {
+            throw new RuntimeException("Owner not found");
+        }
+
+        OwnerEntity owner = ownerCRUDRepository.findById(mascotaDomain.getDuenioIde())
+                .orElseThrow(() -> new RuntimeException("Owner not found"));
+
+        PetEntity pet = mapper.toPet(mascotaDomain);
+
+        PetEntity petFinal = new PetEntity();
+        petFinal.setOwner(owner);
+        petFinal.setNamePet(pet.getNamePet());
+        petFinal.setIdPet(pet.getIdPet());
+
+
+
+        return mapper.toMascota(petCRUDRepository.save(petFinal));
+    }
+
+     */
+
+
     @Override
     public MascotaDomain guardarMascota(MascotaDomain mascotaDomain) {
         PetEntity pet = mapper.toPet(mascotaDomain);
         return mapper.toMascota(petCRUDRepository.save(pet));
     }
+
+
 
     @Override
     public void eliminarMascota(int idMascota) {

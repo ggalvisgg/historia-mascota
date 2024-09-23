@@ -11,7 +11,7 @@ import java.util.List;
 public class VetEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_Vet")
     private int idVet;
 
     @Column(name = "nameVet")
@@ -23,13 +23,6 @@ public class VetEntity {
     @Column(name = "phoneVet")
     private String phoneVet;
 
-    /*
-    @ManyToOne
-    @JoinColumn(name = "idUser", insertable=false, updatable=false)
-    private UserEntity user;
-
-
-     */
     @OneToMany(mappedBy = "vet")
     private List<SurgeryEntity> surgery;
 
