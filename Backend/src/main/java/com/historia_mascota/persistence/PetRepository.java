@@ -4,7 +4,10 @@ import com.historia_mascota.domain.MascotaDomain;
 import com.historia_mascota.domain.repository.MascotaRepository;
 import com.historia_mascota.persistence.crud.OwnerCRUDRepository;
 import com.historia_mascota.persistence.crud.PetCRUDRepository;
+import com.historia_mascota.persistence.crud.VetCRUDRepository;
+import com.historia_mascota.persistence.entity.OwnerEntity;
 import com.historia_mascota.persistence.entity.PetEntity;
+import com.historia_mascota.persistence.entity.VetEntity;
 import com.historia_mascota.persistence.mapper.MascotaMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -20,6 +23,9 @@ public class PetRepository implements MascotaRepository {
 
     @Autowired
     private OwnerCRUDRepository ownerCRUDRepository;
+
+    @Autowired
+    private VetCRUDRepository vetCRUDRepository;
 
     @Autowired
     private MascotaMapper mapper;
@@ -59,7 +65,33 @@ public class PetRepository implements MascotaRepository {
 
     @Override
     public MascotaDomain guardarMascota(MascotaDomain mascotaDomain) {
+
+        System.out.println(mascotaDomain.getId());
+        System.out.println(mascotaDomain.getEdad());
+        System.out.println(mascotaDomain.getGenero());
+        System.out.println(mascotaDomain.getRaza());
+        System.out.println(mascotaDomain.getTipoMascota());
+        System.out.println(mascotaDomain.getDuenioId().getId());
+        System.out.println(mascotaDomain.getVeterinarioId().getId());
+
         PetEntity pet = mapper.toPet(mascotaDomain);
+
+        Optional<OwnerEntity> ownerEntity = ownerCRUDRepository.findById(mascotaDomain.getDuenioId().getId());
+        Optional<VetEntity> vetEntity = vetCRUDRepository.findById(mascotaDomain.getVeterinarioId().getId());
+
+        System.out.println("Antes de: -------------------------------------");
+
+        ownerEntity.ifPresent(pet::setOwner);
+        vetEntity.ifPresent(pet::setVet);
+
+        System.out.println(pet.getIdPet());
+        System.out.println(pet.getAgePet());
+        System.out.println(pet.getGenderPet());
+        System.out.println(pet.getSpeciesPet());
+        System.out.println(pet.getTypePet());
+        System.out.println(pet.getOwner());
+        System.out.println(pet.getVet().getIdVet());
+
         return mapper.toMascota(petCRUDRepository.save(pet));
     }
 

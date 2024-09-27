@@ -1,6 +1,5 @@
 package com.historia_mascota.persistence.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -35,4 +34,68 @@ public class VetEntity {
 
     @OneToMany(mappedBy = "vet")
     private List<WeightControlEntity> weight;
+
+    public List<PetEntity> getPet() {
+        return pet;
+    }
+
+    public void setPet(List<PetEntity> pet) {
+        this.pet = pet;
+    }
+
+    public int getIdVet() {
+        return idVet;
+    }
+
+    public void setIdVet(int idVet) {
+        this.idVet = idVet;
+    }
+
+    public List<DewormingEntity> getDeworming() {
+        return deworming;
+    }
+
+    public void setDeworming(List<DewormingEntity> deworming) {
+        this.deworming = deworming;
+    }
+
+    public List<SurgeryEntity> getSurgery() {
+        return surgery;
+    }
+
+    public void setSurgery(List<SurgeryEntity> surgery) {
+        this.surgery = surgery;
+    }
+
+    public String getNameVet() {
+        return nameVet;
+    }
+
+    public void setNameVet(String nameVet) {
+        this.nameVet = nameVet;
+    }
+
+    public String getPhoneVet() {
+        return phoneVet;
+    }
+
+    public void setPhoneVet(String phoneVet) {
+        this.phoneVet = phoneVet;
+    }
+
+    public String getSpecialtyVet() {
+        return specialtyVet;
+    }
+
+    public void setSpecialtyVet(String specialtyVet) {
+        this.specialtyVet = specialtyVet;
+    }
+
+    public List<WeightControlEntity> getWeight() {
+        return weight;
+    }
+
+    public void setWeight(List<WeightControlEntity> weight) {
+        this.weight = weight;
+    }
 }

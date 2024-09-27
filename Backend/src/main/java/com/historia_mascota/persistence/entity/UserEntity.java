@@ -3,8 +3,6 @@ package com.historia_mascota.persistence.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.util.List;
-
 @Data
 @Entity
 @Table(name = "user")
@@ -16,6 +14,22 @@ public class UserEntity {
 
     @Column(name = "user_type")
     private String userType;
+
+    public Integer getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(Integer idUser) {
+        this.idUser = idUser;
+    }
+
+    public String getUserType() {
+        return userType;
+    }
+
+    public void setUserType(String userType) {
+        this.userType = userType;
+    }
 }
 
 
