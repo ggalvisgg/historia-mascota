@@ -32,15 +32,17 @@ public interface MascotaMapper {
     List<MascotaDomain> toMascotas(List<PetEntity> pets);
 
     @InheritInverseConfiguration
+
     @Mappings({
             @Mapping(target = "owner", ignore = true),
             @Mapping(target = "vet", ignore = true),
-            @Mapping(target = "vacunation", ignore = true),
-            @Mapping(target = "weight", ignore = true),
-            @Mapping(target = "deworming", ignore = true),
-            @Mapping(target = "surgery", ignore = true),
-            @Mapping(target = "notification", ignore = true)
+            //@Mapping(target = "vacunation", ignore = true),
+            //@Mapping(target = "weight", ignore = true),
+            //@Mapping(target = "deworming", ignore = true),
+            //@Mapping(target = "surgery", ignore = true),
+            //@Mapping(target = "notification", ignore = true)
     })
+
     PetEntity toPet(MascotaDomain mascotaDomain);
 
     @Named("toDuenioWithoutPets")
