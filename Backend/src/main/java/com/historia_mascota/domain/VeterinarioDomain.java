@@ -1,5 +1,4 @@
 package com.historia_mascota.domain;
-
 import java.util.List;
 
 public class VeterinarioDomain {

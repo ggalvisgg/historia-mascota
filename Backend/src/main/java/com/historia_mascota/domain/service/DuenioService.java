@@ -34,9 +34,11 @@ public class DuenioService {
     public DuenioDomain guardarDuenio(DuenioDomain duenioDomain) {
 
         if(duenioRepository.existeDuenio(duenioDomain.getId())){
+            System.out.println("existeeeeeeee el duenio desde owner");
             throw new RuntimeException();
         }else {
             if (userRepository.existsByIdUser(duenioDomain.getId())) {
+                System.out.println("existeeeeeeee el veterinario desde owner");
                 throw new RuntimeException();
             }
             DuenioDomain duenio = duenioRepository.guardarDuenio(duenioDomain);

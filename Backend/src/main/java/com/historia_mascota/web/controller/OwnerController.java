@@ -10,6 +10,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/owners")
+@CrossOrigin(origins = "http://localhost:4200")
 public class OwnerController {
 
     @Autowired

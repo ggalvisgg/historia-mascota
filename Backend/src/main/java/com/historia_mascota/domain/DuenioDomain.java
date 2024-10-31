@@ -1,7 +1,4 @@
 package com.historia_mascota.domain;
-
-import com.historia_mascota.domain.dto.PetDto;
-
 import java.util.List;
 
 public class DuenioDomain {
@@ -61,6 +58,3 @@ public class DuenioDomain {
         this.pet = pet;
     }
 }
-
-
-
