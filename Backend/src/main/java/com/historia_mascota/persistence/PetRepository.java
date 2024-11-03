@@ -66,31 +66,13 @@ public class PetRepository implements MascotaRepository {
     @Override
     public MascotaDomain guardarMascota(MascotaDomain mascotaDomain) {
 
-        System.out.println(mascotaDomain.getId());
-        System.out.println(mascotaDomain.getEdad());
-        System.out.println(mascotaDomain.getGenero());
-        System.out.println(mascotaDomain.getRaza());
-        System.out.println(mascotaDomain.getTipoMascota());
-        System.out.println(mascotaDomain.getDuenioId().getId());
-        System.out.println(mascotaDomain.getVeterinarioId().getId());
-
         PetEntity pet = mapper.toPet(mascotaDomain);
 
         Optional<OwnerEntity> ownerEntity = ownerCRUDRepository.findById(mascotaDomain.getDuenioId().getId());
         Optional<VetEntity> vetEntity = vetCRUDRepository.findById(mascotaDomain.getVeterinarioId().getId());
 
-        System.out.println("Antes de: -------------------------------------");
-
         ownerEntity.ifPresent(pet::setOwner);
         vetEntity.ifPresent(pet::setVet);
-
-        System.out.println(pet.getIdPet());
-        System.out.println(pet.getAgePet());
-        System.out.println(pet.getGenderPet());
-        System.out.println(pet.getSpeciesPet());
-        System.out.println(pet.getTypePet());
-        System.out.println(pet.getOwner());
-        System.out.println(pet.getVet().getIdVet());
 
         return mapper.toMascota(petCRUDRepository.save(pet));
     }

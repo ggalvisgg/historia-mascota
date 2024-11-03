@@ -2,6 +2,8 @@ package com.historia_mascota.persistence.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.antlr.v4.runtime.misc.NotNull;
+
 import java.util.List;
 
 @Data
@@ -28,11 +30,13 @@ public class PetEntity {
     @Column(name = "genderPet")
     private String genderPet;
 
-    @ManyToOne
+    @NotNull
+    @ManyToOne(optional = false)
     @JoinColumn(name = "idOwner")
     private OwnerEntity owner;
 
-    @ManyToOne
+    @NotNull
+    @ManyToOne(optional = false)
     @JoinColumn(name = "idVet")
     private VetEntity vet;
 

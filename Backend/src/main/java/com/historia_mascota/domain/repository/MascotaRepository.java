@@ -15,3 +15,4 @@ public interface MascotaRepository {
     MascotaDomain guardarMascota(MascotaDomain mascotaDomain);
     void eliminarMascota(int idMascota);
 }
+

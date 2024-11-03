@@ -3,8 +3,8 @@ package com.historia_mascota.persistence.mapper;
 import com.historia_mascota.domain.DuenioDomain;
 import com.historia_mascota.domain.MascotaDomain;
 import com.historia_mascota.domain.VeterinarioDomain;
-import com.historia_mascota.persistence.entity.OwnerEntity;
 import com.historia_mascota.persistence.entity.PetEntity;
+import com.historia_mascota.persistence.entity.OwnerEntity;
 import com.historia_mascota.persistence.entity.VetEntity;
 import org.mapstruct.*;
 
@@ -29,25 +29,19 @@ public interface MascotaMapper {
             @Mapping(source = "notification", target = "notificacion")
     })
     MascotaDomain toMascota(PetEntity petEntity);
+
     List<MascotaDomain> toMascotas(List<PetEntity> pets);
 
     @InheritInverseConfiguration
-
     @Mappings({
-            @Mapping(target = "owner", ignore = true),
-            @Mapping(target = "vet", ignore = true),
-            //@Mapping(target = "vacunation", ignore = true),
-            //@Mapping(target = "weight", ignore = true),
-            //@Mapping(target = "deworming", ignore = true),
-            //@Mapping(target = "surgery", ignore = true),
-            //@Mapping(target = "notification", ignore = true)
+            @Mapping(target = "owner", ignore = true),  // Ignora el dueño en el mapeo inverso para evitar recursividad
+            @Mapping(target = "vet", ignore = true)      // Ignora el veterinario en el mapeo inverso
     })
-
     PetEntity toPet(MascotaDomain mascotaDomain);
 
     @Named("toDuenioWithoutPets")
     @Mappings({
-            @Mapping(target = "pet", ignore = true),
+            @Mapping(target = "pet", ignore = true),  // Ignora las mascotas del dueño para evitar recursividad
             @Mapping(source = "idOwner", target = "id"),
             @Mapping(source = "nameOwner", target = "name"),
             @Mapping(source = "lastOwner", target = "last"),
@@ -58,7 +52,7 @@ public interface MascotaMapper {
 
     @Named("toVeterinarioWithoutPets")
     @Mappings({
-            @Mapping(target = "mascotas", ignore = true),
+            @Mapping(target = "mascotas", ignore = true),  // Ignora la lista de mascotas para evitar recursividad
             @Mapping(source = "idVet", target = "id"),
             @Mapping(source = "nameVet", target = "nombre"),
             @Mapping(source = "specialtyVet", target = "especialidad"),
@@ -68,21 +62,4 @@ public interface MascotaMapper {
             @Mapping(target = "controlPeso", ignore = true)
     })
     VeterinarioDomain toVeterinarioWithoutPets(VetEntity vetEntity);
-
-    /*
-    VacunacionDomain vacunationEntityToVacunacionDomain(VacunationEntity vacunationEntity);
-    List<VacunacionDomain> vacunationEntityListToVacunacionDomainList(List<VacunationEntity> list);
-
-    ControlPesoDomain weightControlEntityToControlPesoDomain(WeightControlEntity weightControlEntity);
-    List<ControlPesoDomain> weightControlEntityListToControlPesoDomainList(List<WeightControlEntity> list);
-
-    DesparacitacionDomain dewormingEntityToDesparacitacionDomain(DewormingEntity dewormingEntity);
-    List<DesparacitacionDomain> dewormingEntityListToDesparacitacionDomainList(List<DewormingEntity> list);
-
-    CirujiaDomain surgeryEntityToCirujiaDomain(SurgeryEntity surgeryEntity);
-    List<CirujiaDomain> surgeryEntityListToCirujiaDomainList(List<SurgeryEntity> list);
-
-    NotificacionDomain notificationEntityToNotificacionDomain(NotificationEntity notificationEntity);
-    List<NotificacionDomain> notificationEntityListToNotificacionDomainList(List<NotificationEntity> list);
-     */
 }
