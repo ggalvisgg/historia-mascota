@@ -3,8 +3,6 @@ package com.historia_mascota.persistence.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.time.LocalDate;
-
 @Data
 @Entity
 @Table(name="surgery")
@@ -12,32 +10,29 @@ public class SurgeryEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int codSurgery;
-
-    @Column(name = "nameSurgery")
-    private String nameSurgery;
-
-    @Column(name = "description")
-    private String description;
+    private int idSurgery;
 
     @Column(name = "dateSurgery")
-    private LocalDate dateSurgery;
+    private String dateSurgery;
+
+    @Column(name = "hourSurgery")
+    private String hourSurgery;
 
     @Column(name = "stateSurgery")
-    private boolean stateSurgery;
+    private String stateSurgery;
 
     @Column(name = "observation")
     private String observation;
 
     @ManyToOne
-    @JoinColumn(name = "idVet", insertable=false, updatable=false)
+    @JoinColumn(name = "idVet")
     private VetEntity vet;
 
     @ManyToOne
-    @JoinColumn(name = "idPet", insertable=false, updatable=false)
+    @JoinColumn(name = "idPet")
     private PetEntity pet;
 
     @ManyToOne
-    @JoinColumn(name = "idTypeSurgery", insertable=false, updatable=false)
+    @JoinColumn(name = "idTypeSurgery")
     private TypeSurgeryEntity typeSurgery;
 }

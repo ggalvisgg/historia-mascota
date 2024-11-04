@@ -12,11 +12,11 @@ public class TypeSurgeryEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int codTypeSurgery;
+    private int idTypeSurgery;
 
-    @Column(name = "description")
-    private String description;
+    @Column(name = "descriptionSu")
+    private String descriptionSu;
 
     @OneToMany(mappedBy = "typeSurgery")
-    private List<SurgeryEntity> surgery;
+    private List<SurgeryEntity> typeSurgery;
 }

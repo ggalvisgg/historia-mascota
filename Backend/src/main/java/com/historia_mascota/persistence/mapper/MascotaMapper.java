@@ -1,8 +1,10 @@
 package com.historia_mascota.persistence.mapper;
 
+import com.historia_mascota.domain.DesparacitacionDomain;
 import com.historia_mascota.domain.DuenioDomain;
 import com.historia_mascota.domain.MascotaDomain;
 import com.historia_mascota.domain.VeterinarioDomain;
+import com.historia_mascota.persistence.entity.DewormingEntity;
 import com.historia_mascota.persistence.entity.PetEntity;
 import com.historia_mascota.persistence.entity.OwnerEntity;
 import com.historia_mascota.persistence.entity.VetEntity;
@@ -24,7 +26,7 @@ public interface MascotaMapper {
             @Mapping(source = "vet", target = "veterinarioId", qualifiedByName = "toVeterinarioWithoutPets"),
             @Mapping(source = "vacunation", target = "vacunacion"),
             @Mapping(source = "weight", target = "controlPeso"),
-            @Mapping(source = "deworming", target = "desparacitacion"),
+            @Mapping(source = "deworming", target = "desparacitacion", qualifiedByName = "toDesparacitacionWithoutPets"),
             @Mapping(source = "surgery", target = "cirujia"),
             @Mapping(source = "notification", target = "notificacion")
     })
@@ -35,7 +37,8 @@ public interface MascotaMapper {
     @InheritInverseConfiguration
     @Mappings({
             @Mapping(target = "owner", ignore = true),  // Ignora el dueño en el mapeo inverso para evitar recursividad
-            @Mapping(target = "vet", ignore = true)      // Ignora el veterinario en el mapeo inverso
+            @Mapping(target = "vet", ignore = true),      // Ignora el veterinario en el mapeo inverso
+            @Mapping(target = "deworming", ignore = true)
     })
     PetEntity toPet(MascotaDomain mascotaDomain);
 
@@ -62,4 +65,15 @@ public interface MascotaMapper {
             @Mapping(target = "controlPeso", ignore = true)
     })
     VeterinarioDomain toVeterinarioWithoutPets(VetEntity vetEntity);
+
+    @Named("toDesparacitacionWithoutPets")
+    @Mappings({
+            @Mapping(target = "veterinario", ignore = true),
+            @Mapping(target = "tipo", ignore = true),
+            @Mapping(target = "mascota", ignore = true),
+            @Mapping(source = "idDeworming", target = "id"),
+            @Mapping(source = "dateDeworming", target = "fecha")
+    })
+    DesparacitacionDomain toDesparacitacionWithoutPets(DewormingEntity dewormingEntity);
+
 }
