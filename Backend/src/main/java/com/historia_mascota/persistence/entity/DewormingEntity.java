@@ -18,14 +18,38 @@ public class DewormingEntity{
     private String dateDeworming;
 
     @ManyToOne
-    @JoinColumn(name = "idVet", insertable=false, updatable=false)
+    @JoinColumn(name = "idVet")
     private VetEntity vet;
 
     @ManyToOne
-    @JoinColumn(name = "idTypeDeworming", insertable=false, updatable=false)
+    @JoinColumn(name = "idTypeDeworming")
     private TypeDewormingEntity typeDeworming;
 
     @ManyToOne
-    @JoinColumn(name = "idPet", insertable=false, updatable=false)
+    @JoinColumn(name = "idPet")
     private PetEntity pet;
+
+    public VetEntity getVet() {
+        return vet;
+    }
+
+    public PetEntity getPet() {
+        return pet;
+    }
+
+    public TypeDewormingEntity getTypeDeworming() {
+        return typeDeworming;
+    }
+
+    public void setVet(VetEntity vet) {
+        this.vet = vet;
+    }
+
+    public void setTypeDeworming(TypeDewormingEntity typeDeworming) {
+        this.typeDeworming = typeDeworming;
+    }
+
+    public void setPet(PetEntity pet) {
+        this.pet = pet;
+    }
 }
