@@ -18,5 +18,5 @@ public class TypeDewormingEntity {
     private String description;
 
     @OneToMany(mappedBy = "typeDeworming")
-    private List<DewormingEntity> tyDeworming;
+    private List<DewormingEntity> typeDeworming;
 }

@@ -12,19 +12,20 @@ public class WeightControlEntity extends InformationTable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long idWeightControl;
+    private int idWeightControl;
 
     @Column(name="dateWeight")
-    private LocalDate dateWeight;
+    private String dateWeight;
 
     @Column(name = "weight")
     private float weight;
 
-    @ManyToOne
-    @JoinColumn(name = "codVet", insertable=false, updatable=false)
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "idVet", nullable = false)
     private VetEntity vet;
 
-    @ManyToOne
-    @JoinColumn(name="idPet", insertable=false, updatable=false)
+    @ManyToOne(optional = false)
+    @JoinColumn(name="idPet", nullable = false)
     private PetEntity pet;
+
 }

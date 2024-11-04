@@ -1,11 +1,8 @@
 package com.historia_mascota.persistence;
 
-import com.historia_mascota.domain.DuenioDomain;
 import com.historia_mascota.domain.VeterinarioDomain;
-
 import com.historia_mascota.domain.repository.VeterinarioRepository;
 import com.historia_mascota.persistence.crud.VetCRUDRepository;
-import com.historia_mascota.persistence.entity.OwnerEntity;
 import com.historia_mascota.persistence.entity.VetEntity;
 import com.historia_mascota.persistence.mapper.VeterinarioMapper;
 import org.springframework.beans.factory.annotation.Autowired;
