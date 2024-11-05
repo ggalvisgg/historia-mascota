@@ -25,15 +25,15 @@ public class SurgeryEntity {
     private String observation;
 
     @ManyToOne
-    @JoinColumn(name = "idVet")
+    @JoinColumn(name = "idVet", nullable = false)
     private VetEntity vet;
 
     @ManyToOne
-    @JoinColumn(name = "idPet")
+    @JoinColumn(name = "idPet", nullable = false)
     private PetEntity pet;
 
     @ManyToOne
-    @JoinColumn(name = "idTypeSurgery")
+    @JoinColumn(name = "idTypeSurgery", nullable = false)
     private TypeSurgeryEntity typeSurgery;
 
     public void setVet(VetEntity vet) {
