@@ -3,12 +3,10 @@ package com.historia_mascota.persistence.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.time.LocalDate;
-
 @Data
 @Entity
 @Table(name = "weightControl")
-public class WeightControlEntity extends InformationTable{
+public class WeightControlEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,15 +15,25 @@ public class WeightControlEntity extends InformationTable{
     @Column(name="dateWeight")
     private String dateWeight;
 
+    @Column(name="hourWeight")
+    private String hourWeight;
+
     @Column(name = "weight")
     private float weight;
 
-    @ManyToOne(optional = false)
+    @ManyToOne
     @JoinColumn(name = "idVet", nullable = false)
     private VetEntity vet;
 
-    @ManyToOne(optional = false)
+    @ManyToOne
     @JoinColumn(name="idPet", nullable = false)
     private PetEntity pet;
 
+    public void setPet(PetEntity pet) {
+        this.pet = pet;
+    }
+
+    public void setVet(VetEntity vet) {
+        this.vet = vet;
+    }
 }

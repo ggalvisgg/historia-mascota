@@ -1,15 +1,7 @@
 package com.historia_mascota.persistence.mapper;
 
-import com.historia_mascota.domain.DesparacitacionDomain;
-import com.historia_mascota.domain.CirujiaDomain;
-import com.historia_mascota.domain.DuenioDomain;
-import com.historia_mascota.domain.MascotaDomain;
-import com.historia_mascota.domain.VeterinarioDomain;
-import com.historia_mascota.persistence.entity.DewormingEntity;
-import com.historia_mascota.persistence.entity.SurgeryEntity;
-import com.historia_mascota.persistence.entity.PetEntity;
-import com.historia_mascota.persistence.entity.OwnerEntity;
-import com.historia_mascota.persistence.entity.VetEntity;
+import com.historia_mascota.domain.*;
+import com.historia_mascota.persistence.entity.*;
 import org.mapstruct.*;
 
 import java.util.List;
@@ -27,7 +19,7 @@ public interface MascotaMapper {
             @Mapping(source = "owner", target = "duenioId", qualifiedByName = "toDuenioWithoutPets"),
             @Mapping(source = "vet", target = "veterinarioId", qualifiedByName = "toVeterinarioWithoutPets"),
             @Mapping(source = "vacunation", target = "vacunacion"),
-            @Mapping(source = "weight", target = "controlPeso"),
+            @Mapping(source = "weight", target = "controlPeso", qualifiedByName = "toControlPesoWithoutPets"),
             @Mapping(source = "deworming", target = "desparacitacion", qualifiedByName = "toDesparacitacionWithoutPets"),
             @Mapping(source = "surgery", target = "cirujia",  qualifiedByName = "toCirujiaWithoutPets"),
             @Mapping(source = "notification", target = "notificacion")
@@ -38,16 +30,17 @@ public interface MascotaMapper {
 
     @InheritInverseConfiguration
     @Mappings({
-            @Mapping(target = "owner", ignore = true),  // Ignora el dueño en el mapeo inverso para evitar recursividad
-            @Mapping(target = "vet", ignore = true),      // Ignora el veterinario en el mapeo inverso
+            @Mapping(target = "owner", ignore = true),
+            @Mapping(target = "vet", ignore = true),
             @Mapping(target = "deworming", ignore = true),
+            @Mapping(target = "weight", ignore = true),
             @Mapping(target = "surgery", ignore = true)
     })
     PetEntity toPet(MascotaDomain mascotaDomain);
 
     @Named("toDuenioWithoutPets")
     @Mappings({
-            @Mapping(target = "pet", ignore = true),  // Ignora las mascotas del dueño para evitar recursividad
+            @Mapping(target = "pet", ignore = true),
             @Mapping(source = "idOwner", target = "id"),
             @Mapping(source = "nameOwner", target = "name"),
             @Mapping(source = "lastOwner", target = "last"),
@@ -79,7 +72,6 @@ public interface MascotaMapper {
     })
     DesparacitacionDomain toDesparacitacionWithoutPets(DewormingEntity dewormingEntity);
 
-
     @Named("toCirujiaWithoutPets")
     @Mappings({
             @Mapping(target = "veterinario", ignore = true),
@@ -94,4 +86,14 @@ public interface MascotaMapper {
     })
     CirujiaDomain toCirujiaWithoutPets(SurgeryEntity surgeryEntity);
 
+    @Named("toControlPesoWithoutPets")
+    @Mappings({
+            @Mapping(target = "veterinario", ignore = true),
+            @Mapping(target = "mascota", ignore = true),
+            @Mapping(source = "idWeightControl", target = "id"),
+            @Mapping(source = "dateWeight", target = "fechaControl"),
+            @Mapping(source = "hourWeight", target = "horaControl"),
+            @Mapping(source = "weight", target = "peso")
+    })
+    ControlPesoDomain toControlPesoWithoutPets(WeightControlEntity weightControlEntity);
 }

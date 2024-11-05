@@ -3,8 +3,6 @@ package com.historia_mascota.persistence.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.time.LocalDate;
-
 @Data
 @Entity
 @Table(name="deworming")
@@ -18,15 +16,15 @@ public class DewormingEntity{
     private String dateDeworming;
 
     @ManyToOne
-    @JoinColumn(name = "idVet")
+    @JoinColumn(name = "idVet", nullable = false)
     private VetEntity vet;
 
     @ManyToOne
-    @JoinColumn(name = "idTypeDeworming")
+    @JoinColumn(name = "idTypeDeworming", nullable = false)
     private TypeDewormingEntity typeDeworming;
 
     @ManyToOne
-    @JoinColumn(name = "idPet")
+    @JoinColumn(name = "idPet", nullable = false)
     private PetEntity pet;
 
     public VetEntity getVet() {

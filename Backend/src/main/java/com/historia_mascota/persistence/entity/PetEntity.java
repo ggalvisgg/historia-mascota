@@ -30,14 +30,12 @@ public class PetEntity {
     @Column(name = "genderPet")
     private String genderPet;
 
-    @NotNull
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "idOwner")
+    @ManyToOne
+    @JoinColumn(name = "idOwner", nullable = false)
     private OwnerEntity owner;
 
-    @NotNull
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "idVet")
+    @ManyToOne
+    @JoinColumn(name = "idVet", nullable = false)
     private VetEntity vet;
 
     @OneToMany(mappedBy = "pet")
