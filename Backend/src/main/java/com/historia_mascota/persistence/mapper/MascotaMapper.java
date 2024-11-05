@@ -1,10 +1,12 @@
 package com.historia_mascota.persistence.mapper;
 
 import com.historia_mascota.domain.DesparacitacionDomain;
+import com.historia_mascota.domain.CirujiaDomain;
 import com.historia_mascota.domain.DuenioDomain;
 import com.historia_mascota.domain.MascotaDomain;
 import com.historia_mascota.domain.VeterinarioDomain;
 import com.historia_mascota.persistence.entity.DewormingEntity;
+import com.historia_mascota.persistence.entity.SurgeryEntity;
 import com.historia_mascota.persistence.entity.PetEntity;
 import com.historia_mascota.persistence.entity.OwnerEntity;
 import com.historia_mascota.persistence.entity.VetEntity;
@@ -12,7 +14,7 @@ import org.mapstruct.*;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", uses = {TipoCirujiaMapper.class})
 public interface MascotaMapper {
 
     @Mappings({
@@ -27,7 +29,7 @@ public interface MascotaMapper {
             @Mapping(source = "vacunation", target = "vacunacion"),
             @Mapping(source = "weight", target = "controlPeso"),
             @Mapping(source = "deworming", target = "desparacitacion", qualifiedByName = "toDesparacitacionWithoutPets"),
-            @Mapping(source = "surgery", target = "cirujia"),
+            @Mapping(source = "surgery", target = "cirujia",  qualifiedByName = "toCirujiaWithoutPets"),
             @Mapping(source = "notification", target = "notificacion")
     })
     MascotaDomain toMascota(PetEntity petEntity);
@@ -38,7 +40,8 @@ public interface MascotaMapper {
     @Mappings({
             @Mapping(target = "owner", ignore = true),  // Ignora el dueño en el mapeo inverso para evitar recursividad
             @Mapping(target = "vet", ignore = true),      // Ignora el veterinario en el mapeo inverso
-            @Mapping(target = "deworming", ignore = true)
+            @Mapping(target = "deworming", ignore = true),
+            @Mapping(target = "surgery", ignore = true)
     })
     PetEntity toPet(MascotaDomain mascotaDomain);
 
@@ -75,5 +78,20 @@ public interface MascotaMapper {
             @Mapping(source = "dateDeworming", target = "fecha")
     })
     DesparacitacionDomain toDesparacitacionWithoutPets(DewormingEntity dewormingEntity);
+
+
+    @Named("toCirujiaWithoutPets")
+    @Mappings({
+            @Mapping(target = "veterinario", ignore = true),
+            @Mapping(target = "mascota", ignore = true),
+            //@Mapping(target = "tipo", ignore = true),
+            @Mapping(source = "typeSurgery", target = "tipo"),
+            @Mapping(source = "idSurgery", target = "id"),
+            @Mapping(source = "dateSurgery", target = "fecha"),
+            @Mapping(source = "hourSurgery", target = "hora"),
+            @Mapping(source = "stateSurgery", target = "estado"),
+            @Mapping(source = "observation", target = "observacion")
+    })
+    CirujiaDomain toCirujiaWithoutPets(SurgeryEntity surgeryEntity);
 
 }

@@ -35,4 +35,16 @@ public class SurgeryEntity {
     @ManyToOne
     @JoinColumn(name = "idTypeSurgery")
     private TypeSurgeryEntity typeSurgery;
+
+    public void setVet(VetEntity vet) {
+        this.vet = vet;
+    }
+
+    public void setPet(PetEntity pet) {
+        this.pet = pet;
+    }
+
+    public void setTypeSurgery(TypeSurgeryEntity typeSurgery) {
+        this.typeSurgery = typeSurgery;
+    }
 }
