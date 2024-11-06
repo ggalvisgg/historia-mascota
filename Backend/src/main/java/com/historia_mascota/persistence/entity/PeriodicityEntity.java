@@ -18,7 +18,7 @@ public class PeriodicityEntity {
     private String description;
 
     @Column(name="intervalDays")
-    private int intervalDays;
+    private String intervalDays;
 
     @OneToMany(mappedBy = "periodicity")
     private List<VacunationEntity> vacunation;

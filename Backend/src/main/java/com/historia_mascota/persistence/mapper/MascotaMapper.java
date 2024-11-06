@@ -68,7 +68,10 @@ public interface MascotaMapper {
             @Mapping(target = "tipo", ignore = true),
             @Mapping(target = "mascota", ignore = true),
             @Mapping(source = "idDeworming", target = "id"),
-            @Mapping(source = "dateDeworming", target = "fecha")
+            @Mapping(source = "dateDeworming", target = "fecha"),
+            @Mapping(source = "type", target = "tipoDesparacitacion"),
+            @Mapping(source = "batchControl", target = "lote"),
+            @Mapping(source = "boosterControl", target = "refuerzo")
     })
     DesparacitacionDomain toDesparacitacionWithoutPets(DewormingEntity dewormingEntity);
 

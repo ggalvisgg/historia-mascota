@@ -15,6 +15,15 @@ public class DewormingEntity{
     @Column(name = "dateDeworming")
     private String dateDeworming;
 
+    @Column(name = "type")
+    private String type;
+
+    @Column(name = "batchControl")
+    private String batchControl; //lote
+
+    @Column(name = "boosterControl")
+    private String boosterControl; //refuerzo
+
     @ManyToOne
     @JoinColumn(name = "idVet", nullable = false)
     private VetEntity vet;

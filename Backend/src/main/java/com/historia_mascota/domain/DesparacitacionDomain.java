@@ -4,6 +4,9 @@ public class DesparacitacionDomain {
 
     private int id;
     private String fecha;
+    private String tipoDesparacitacion;
+    private String lote;
+    private String refuerzo;
     private VeterinarioDomain veterinario;
     private TipoDesparacitacionDomain tipo;
     private MascotaDomain mascota;
@@ -22,6 +25,30 @@ public class DesparacitacionDomain {
 
     public void setFecha(String fecha) {
         this.fecha = fecha;
+    }
+
+    public String getTipoDesparacitacion() {
+        return tipoDesparacitacion;
+    }
+
+    public void setTipoDesparacitacion(String tipoDesparacitacion) {
+        this.tipoDesparacitacion = tipoDesparacitacion;
+    }
+
+    public String getLote() {
+        return lote;
+    }
+
+    public void setLote(String lote) {
+        this.lote = lote;
+    }
+
+    public String getRefuerzo() {
+        return refuerzo;
+    }
+
+    public void setRefuerzo(String refuerzo) {
+        this.refuerzo = refuerzo;
     }
 
     public VeterinarioDomain getVeterinario() {

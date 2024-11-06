@@ -11,6 +11,9 @@ public interface DesparacitacionMapper {
     @Mappings({
             @Mapping(source = "idDeworming", target = "id"),
             @Mapping(source = "dateDeworming", target = "fecha"),
+            @Mapping(source = "type", target = "tipoDesparacitacion"),
+            @Mapping(source = "batchControl", target = "lote"),
+            @Mapping(source = "boosterControl", target = "refuerzo"),
             //@Mapping(source = "vet", target = "veterinario"),
             //@Mapping(source = "typeDeworming", target = "tipo"),
             @Mapping(source = "pet", target = "mascota")
@@ -23,6 +26,7 @@ public interface DesparacitacionMapper {
 
     @Mappings({
             @Mapping(target = "pet", ignore = true)
+            //@Mapping(target = "vet", ignore = true)
     })
     DewormingEntity toDeworming(DesparacitacionDomain desparacitacionDomain);
 }
