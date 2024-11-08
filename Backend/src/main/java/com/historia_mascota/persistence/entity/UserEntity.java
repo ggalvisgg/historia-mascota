@@ -38,7 +38,7 @@ public class UserEntity {
         return password;
     }
 
-    public void setgetPassword(String password) {
+    public void setPassword(String password) {
         this.password = password;
     }
 }

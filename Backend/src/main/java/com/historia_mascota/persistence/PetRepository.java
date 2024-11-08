@@ -37,6 +37,11 @@ public class PetRepository implements MascotaRepository {
     }
 
     @Override
+    public boolean existePet(int id){
+        return petCRUDRepository.existsById(id);
+    }
+
+    @Override
     public Optional<List<MascotaDomain>> traerMascotaPorNombre(String namePet) {
         List<PetEntity> pets =
                 petCRUDRepository.findByNamePet(namePet);

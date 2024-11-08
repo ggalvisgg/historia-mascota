@@ -2,6 +2,7 @@ package com.historia_mascota.domain.service;
 
 import com.historia_mascota.domain.VeterinarioDomain;
 import com.historia_mascota.domain.repository.VeterinarioRepository;
+import com.historia_mascota.exceptions.DuenioExistenteException;
 import com.historia_mascota.exceptions.UsuarioExistenteException;
 import com.historia_mascota.exceptions.VeterinarioExistenteException;
 import com.historia_mascota.persistence.crud.UserCRUDRepository;
@@ -56,34 +57,12 @@ public class VeterinarioService {
 
         UserEntity user = new UserEntity();
         user.setIdUser(veterinario.getId());
-        user.setgetPassword(veterinario.getTelefono());
+        user.setPassword(veterinario.getTelefono());
         user.setUserType("Vet");
         userRepository.save(user);
 
         return veterinario;
     }
-
-    /*
-    public VeterinarioDomain guardarVeterinario(VeterinarioDomain veterinarioDomain) {
-
-        if(veterinarioRepository.existeVet(veterinarioDomain.getId())){
-            System.out.println("existeeeeeeee el veterinario");
-            throw new RuntimeException();
-        }else {
-            if (userRepository.existsByIdUser(veterinarioDomain.getId())) {
-                System.out.println("existeeeeeeee el usuariooooo");
-                throw new RuntimeException();
-            }
-            VeterinarioDomain veterinario = veterinarioRepository.guardarVeterinario(veterinarioDomain);
-            UserEntity user = new UserEntity();
-            user.setIdUser(veterinario.getId());
-            user.setUserType("Vet");
-            userRepository.save(user);
-            return veterinario;
-        }
-    }
-
-     */
 
     public boolean eliminarVeterinario(int idVet) {
         return obtenerPorId(idVet).map(veterinario -> {
@@ -93,5 +72,21 @@ public class VeterinarioService {
 
             return true;
         }).orElse(false);
+    }
+
+    public VeterinarioDomain actualizarVeterinario(VeterinarioDomain veterinarioDomain) {
+
+        if (!veterinarioRepository.existeVet(veterinarioDomain.getId())) {
+            throw new DuenioExistenteException("El veterinario con ID " + veterinarioDomain.getId() + " no existe.");
+        }
+
+        VeterinarioDomain veterinarioActualizado = veterinarioRepository.guardarVeterinario(veterinarioDomain);
+
+        Optional<UserEntity> userOptional = userRepository.findByIdUser(veterinarioDomain.getId());
+        userOptional.ifPresent(user -> {
+            user.setPassword(veterinarioDomain.getTelefono());
+            userRepository.save(user);
+        });
+        return veterinarioActualizado;
     }
 }

@@ -40,6 +40,12 @@ public class OwnerController {
     public boolean delete(@PathVariable("id") int id) {
         return duenioService.eliminarDuenio(id);
     }
+
+    @PutMapping("/update/{id}")
+    public DuenioDomain update(@PathVariable("id") int id, @RequestBody DuenioDomain duenioDomain) {
+        duenioDomain.setId(id);
+        return duenioService.actualizarDuenio(duenioDomain);
+    }
 }
 
 

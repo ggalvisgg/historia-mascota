@@ -53,7 +53,7 @@ public class DuenioService {
 
         UserEntity user = new UserEntity();
         user.setIdUser(duenio.getId());
-        user.setgetPassword(duenio.getPhone());
+        user.setPassword(duenio.getPhone());
         user.setUserType("Owner");
         userRepository.save(user);
 
@@ -69,6 +69,24 @@ public class DuenioService {
             return true;
         }).orElse(false);
     }
+
+    public DuenioDomain actualizarDuenio(DuenioDomain duenioDomain) {
+
+        if (!duenioRepository.existeDuenio(duenioDomain.getId())) {
+            throw new DuenioExistenteException("El dueño con ID " + duenioDomain.getId() + " no existe.");
+        }
+
+        DuenioDomain duenioActualizado = duenioRepository.guardarDuenio(duenioDomain);
+
+        Optional<UserEntity> userOptional = userRepository.findByIdUser(duenioDomain.getId());
+        userOptional.ifPresent(user -> {
+            user.setPassword(duenioDomain.getPhone());
+            userRepository.save(user);
+        });
+
+        return duenioActualizado;
+    }
+
 }
 
 

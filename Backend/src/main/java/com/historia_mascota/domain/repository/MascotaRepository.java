@@ -8,6 +8,7 @@ import java.util.Optional;
 public interface MascotaRepository {
 
     List<MascotaDomain> traerTodasMascotas();
+    boolean existePet(int id);
     Optional<List<MascotaDomain>> traerMascotaPorNombre(String nombre);
     Optional<List<MascotaDomain>> traerMascotaPorRaza(String raza);
     Optional<List<MascotaDomain>> traerMascotaPorGenero(String genero);

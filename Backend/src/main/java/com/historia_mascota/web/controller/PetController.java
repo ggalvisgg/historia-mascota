@@ -2,6 +2,7 @@ package com.historia_mascota.web.controller;
 
 import com.historia_mascota.domain.DuenioDomain;
 import com.historia_mascota.domain.MascotaDomain;
+import com.historia_mascota.domain.VeterinarioDomain;
 import com.historia_mascota.domain.service.DuenioService;
 import com.historia_mascota.domain.service.MascotaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,6 +54,12 @@ public class PetController {
     @DeleteMapping("/delete/{id}")
     public boolean delete(@PathVariable("id") int idMascota) {
         return mascotaService.eliminarMascota(idMascota);
+    }
+
+    @PutMapping("/update/{id}")
+    public MascotaDomain update(@PathVariable("id") int id, @RequestBody MascotaDomain mascotaDomain) {
+        mascotaDomain.setId(id);
+        return mascotaService.actualizarMascota(mascotaDomain);
     }
 }
 

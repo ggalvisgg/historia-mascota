@@ -3,10 +3,7 @@ package com.historia_mascota.web.controller;
 import com.historia_mascota.domain.VeterinarioDomain;
 import com.historia_mascota.domain.service.VeterinarioService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.Optional;
@@ -46,5 +43,11 @@ public class VetController {
     @DeleteMapping("/delete/{id}")
     public boolean delete(@PathVariable("id") int id) {
         return veterinarioService.eliminarVeterinario(id);
+    }
+
+    @PutMapping("/update/{id}")
+    public VeterinarioDomain update(@PathVariable("id") int id, @RequestBody VeterinarioDomain veterinarioDomain) {
+        veterinarioDomain.setId(id);
+        return veterinarioService.actualizarVeterinario(veterinarioDomain);
     }
 }

@@ -1,7 +1,10 @@
 package com.historia_mascota.domain.service;
 
 import com.historia_mascota.domain.MascotaDomain;
+import com.historia_mascota.domain.VeterinarioDomain;
 import com.historia_mascota.domain.repository.MascotaRepository;
+import com.historia_mascota.exceptions.DuenioExistenteException;
+import com.historia_mascota.persistence.entity.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -43,5 +46,14 @@ public class MascotaService {
             mascotaRepository.eliminarMascota(idMascota);
             return true;
         }).orElse(false);
+    }
+
+    public MascotaDomain actualizarMascota(MascotaDomain mascotaDomain) {
+
+        if (!mascotaRepository.existePet(mascotaDomain.getId())) {
+            throw new DuenioExistenteException("La mascota con ID " + mascotaDomain.getId() + " no existe.");
+        }
+        MascotaDomain mascotaActualizada = mascotaRepository.guardarMascota(mascotaDomain);
+        return mascotaActualizada;
     }
 }
